@@ -105,7 +105,7 @@ function Index() {
         {/* Form Section */}
         <section className="flex-1 px-6 pb-16 pt-2">
           <div className="mx-auto max-w-2xl">
-            <div className="card-surface p-6 sm:p-10">
+            <div className="rounded-xl border border-border bg-card p-6 shadow-sm sm:p-10">
               <div className="mb-8 space-y-2 text-center">
                 <h2 className="text-2xl font-bold tracking-tight text-foreground">
                   Nova Solicitação
