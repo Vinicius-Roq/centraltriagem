@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import {
   Send,
@@ -13,6 +14,8 @@ import {
   Flag,
   FileText,
 } from "lucide-react";
+import { submitDemand } from "@/lib/demand.functions";
+
 
 const formSchema = z.object({
   nome: z
@@ -59,6 +62,7 @@ const btnClasses =
 
 export default function DemandForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const submit = useServerFn(submitDemand);
 
   const {
     register,
@@ -73,33 +77,14 @@ export default function DemandForm() {
     setStatus("loading");
 
     try {
-      const response = await fetch(
-        "https://hook.us2.make.com/pmm8o211erg28ga3ynnh5xc6rq3fw4l8",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            nome: data.nome,
-            email: data.email,
-            setor: data.setor,
-            prioridade: data.prioridade,
-            descricao: data.descricao,
-          }),
-        }
-      );
-
-      if (response.ok) {
-        setStatus("success");
-        reset();
-      } else {
-        setStatus("error");
-      }
+      await submit({ data });
+      setStatus("success");
+      reset();
     } catch {
       setStatus("error");
     }
   };
+
 
   if (status === "success") {
     return (
