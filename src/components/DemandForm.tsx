@@ -43,10 +43,19 @@ const setores = [
 ];
 
 const prioridades = [
-  { value: "baixa", label: "Baixa", color: "bg-info text-info-foreground" },
-  { value: "media", label: "Média", color: "bg-warning text-warning-foreground" },
-  { value: "alta", label: "Alta", color: "bg-destructive text-destructive-foreground" },
+  { value: "baixa", label: "Baixa" },
+  { value: "media", label: "Média" },
+  { value: "alta", label: "Alta" },
 ];
+
+const inputClasses =
+  "flex h-11 w-full rounded-lg border border-input bg-background px-3 text-sm text-foreground transition-colors duration-150 placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-[3px] focus:ring-ring/15";
+
+const textareaClasses =
+  "flex min-h-[6rem] w-full rounded-lg border border-input bg-background p-3 text-sm text-foreground transition-colors duration-150 resize-y placeholder:text-muted-foreground focus:border-ring focus:outline-none focus:ring-[3px] focus:ring-ring/15";
+
+const btnClasses =
+  "inline-flex items-center justify-center gap-2 h-11 rounded-lg bg-primary px-6 text-sm font-semibold text-primary-foreground transition-all duration-150 hover:bg-primary/90 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed w-full";
 
 export default function DemandForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -102,10 +111,7 @@ export default function DemandForm() {
         <p className="mt-3 max-w-sm text-muted-foreground">
           Sua demanda foi registrada com sucesso. Nossa equipe analisará e retornará em breve.
         </p>
-        <button
-          onClick={() => setStatus("idle")}
-          className="btn-primary mt-8"
-        >
+        <button onClick={() => setStatus("idle")} className={btnClasses}>
           Enviar Nova Solicitação
         </button>
       </div>
@@ -120,13 +126,7 @@ export default function DemandForm() {
             <User className="h-4 w-4 text-primary" />
             Nome
           </label>
-          <input
-            id="nome"
-            type="text"
-            placeholder="Seu nome completo"
-            className="form-input"
-            {...register("nome")}
-          />
+          <input id="nome" type="text" placeholder="Seu nome completo" className={inputClasses} {...register("nome")} />
           {errors.nome && (
             <p className="flex items-center gap-1.5 text-xs text-destructive">
               <AlertCircle className="h-3.5 w-3.5" />
@@ -140,13 +140,7 @@ export default function DemandForm() {
             <Mail className="h-4 w-4 text-primary" />
             E-mail
           </label>
-          <input
-            id="email"
-            type="email"
-            placeholder="seu@email.com"
-            className="form-input"
-            {...register("email")}
-          />
+          <input id="email" type="email" placeholder="seu@email.com" className={inputClasses} {...register("email")} />
           {errors.email && (
             <p className="flex items-center gap-1.5 text-xs text-destructive">
               <AlertCircle className="h-3.5 w-3.5" />
@@ -162,11 +156,7 @@ export default function DemandForm() {
             <Building2 className="h-4 w-4 text-primary" />
             Setor
           </label>
-          <select
-            id="setor"
-            className="form-input appearance-none cursor-pointer"
-            {...register("setor")}
-          >
+          <select id="setor" className={`${inputClasses} appearance-none cursor-pointer`} {...register("setor")}>
             <option value="">Selecione um setor</option>
             {setores.map((s) => (
               <option key={s.value} value={s.value}>
@@ -187,11 +177,7 @@ export default function DemandForm() {
             <Flag className="h-4 w-4 text-primary" />
             Prioridade
           </label>
-          <select
-            id="prioridade"
-            className="form-input appearance-none cursor-pointer"
-            {...register("prioridade")}
-          >
+          <select id="prioridade" className={`${inputClasses} appearance-none cursor-pointer`} {...register("prioridade")}>
             <option value="">Selecione a prioridade</option>
             {prioridades.map((p) => (
               <option key={p.value} value={p.value}>
@@ -217,7 +203,7 @@ export default function DemandForm() {
           id="descricao"
           placeholder="Descreva sua demanda com o máximo de detalhes possível..."
           rows={5}
-          className="form-textarea"
+          className={textareaClasses}
           {...register("descricao")}
         />
         {errors.descricao && (
@@ -235,11 +221,7 @@ export default function DemandForm() {
         </div>
       )}
 
-      <button
-        type="submit"
-        disabled={status === "loading"}
-        className="btn-primary w-full"
-      >
+      <button type="submit" disabled={status === "loading"} className={btnClasses}>
         {status === "loading" ? (
           <>
             <Loader2 className="h-4 w-4 animate-spin" />
