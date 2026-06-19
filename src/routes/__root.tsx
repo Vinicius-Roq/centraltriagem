@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "central de triagem" },
+      { name: "description", content: "Central de Solicitações is a modern, responsive web application for submitting and triaging requests." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "central de triagem" },
+      { property: "og:description", content: "Central de Solicitações is a modern, responsive web application for submitting and triaging requests." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "central de triagem" },
+      { name: "twitter:description", content: "Central de Solicitações is a modern, responsive web application for submitting and triaging requests." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4eb805ee-f21a-4059-9e87-b374b342065a/id-preview-58b1a9a4--146b7a7a-9ce0-424a-a2b3-ed4fe767d788.lovable.app-1781905590783.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4eb805ee-f21a-4059-9e87-b374b342065a/id-preview-58b1a9a4--146b7a7a-9ce0-424a-a2b3-ed4fe767d788.lovable.app-1781905590783.png" },
     ],
     links: [
       {
