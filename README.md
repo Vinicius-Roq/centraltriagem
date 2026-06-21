@@ -4,39 +4,28 @@
 
 O Central Triagem de Demandas é uma plataforma web responsiva desenvolvida para registrar solicitações internas de funcionários e automatizar o envio de confirmações por e-mail.
 
+Para a automação do fluxo, foi utilizada a plataforma Make.com, integrando Google Sheets e Gmail. Dessa forma, as solicitações são armazenadas automaticamente em uma planilha e o usuário recebe uma confirmação por e-mail após o envio do formulário.
+
 ## Como Funciona
 
 1. O funcionário acessa a plataforma de triagem de demandas.
-2. O usuário preenche os campos:
+
+2. O usuário preenche os seguintes campos:
 
    * Nome
    * E-mail
    * Setor
    * Prioridade
    * Descrição da Demanda
-3. Ao clicar em **Enviar**, os dados são processados e enviados por meio de um webhook.
-4. O webhook aciona uma automação no Make.com.
-5. O sistema envia automaticamente um e-mail de confirmação ao usuário informando que a solicitação foi recebida e será analisada.
 
-## Funcionalidades
+3. Ao clicar em **Enviar**, os dados são enviados por meio de um webhook e armazenados automaticamente em uma planilha do Google Sheets.
 
-* Cadastro de demandas internas.
-* Interface responsiva para desktop e dispositivos móveis.
-* Validação de dados antes do envio.
-* Integração com webhooks.
-* Automação de processos utilizando Make.com.
-* Envio automático de e-mails de confirmação.
+4. A automação criada no Make.com monitora a planilha e utiliza a integração com o Gmail para enviar uma mensagem de confirmação ao endereço de e-mail informado pelo usuário.
 
 ## Tecnologias Utilizadas
 
+* lovable
 * Make.com
-* Lovable
-* google sheets
-  
-## Objetivo do Projeto
+* Google Sheets
+* Gmail
 
-Demonstrar a criação de uma aplicação full-stack com foco em automação de fluxos de trabalho, integração entre serviços e melhoria da comunicação entre usuários e equipes responsáveis pelo atendimento das demandas.
-
-## Acesso ao Projeto
-
-https://centraltriagem.lovable.app
