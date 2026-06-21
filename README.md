@@ -28,4 +28,4 @@ Para a automação do fluxo, foi utilizada a plataforma Make.com, integrando Goo
 * Make.com
 * Google Sheets
 * Gmail
-
+* link: : https://centraltriagem.lovable.app
